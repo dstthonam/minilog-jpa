@@ -1,0 +1,76 @@
+package com.onboarding.projects.exception;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+
+@ControllerAdvice
+public class GlobalExceptionHandler {
+	
+		@ApiResponses(
+				value = {
+						@io.swagger.v3.oas.annotations.responses.ApiResponse(
+								responseCode = "404",
+								description = "User not found"),
+						@io.swagger.v3.oas.annotations.responses.ApiResponse(
+								responseCode = "400",
+								description = "Bad request"),
+						@io.swagger.v3.oas.annotations.responses.ApiResponse(
+								responseCode = "500",
+								description = "Internal server error")
+				})
+		@ExceptionHandler(UserNotFoundException.class)
+		public ResponseEntity<String> handleUserNotfoundException(UserNotFoundException ex) {
+				
+				return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
+		}
+
+		@ApiResponses(
+				value = {
+						@io.swagger.v3.oas.annotations.responses.ApiResponse(
+								responseCode = "404",
+								description = "Article not found"),
+						@io.swagger.v3.oas.annotations.responses.ApiResponse(
+								responseCode = "400",
+								description = "Bad request"),
+						@io.swagger.v3.oas.annotations.responses.ApiResponse(
+								responseCode = "500",
+								description = "Internal server error")
+				})
+		@ExceptionHandler(ArticleNotFoundException.class)
+		public ResponseEntity<String> handleArticleNotfoundException(ArticleNotFoundException ex) {
+				
+				return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
+		}
+
+		@ApiResponses(
+				value = {
+						@io.swagger.v3.oas.annotations.responses.ApiResponse(
+								responseCode = "400",
+								description = "Bad request"),
+						@io.swagger.v3.oas.annotations.responses.ApiResponse(
+								responseCode = "500",
+								description = "Internal server error")
+				})
+		@ExceptionHandler(IllegalArgumentException.class)
+		public ResponseEntity<String> handleIllegalArgumentException(IllegalArgumentException ex) {
+				
+				return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
+		}
+
+		@ApiResponses(
+				value = {
+						@io.swagger.v3.oas.annotations.responses.ApiResponse(
+								responseCode = "500",
+								description = "Internal server error")
+				})
+		@ExceptionHandler(Exception.class)
+		public ResponseEntity<String> handleException(Exception ex) {
+				
+				return new ResponseEntity<>(ex.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		
+}
