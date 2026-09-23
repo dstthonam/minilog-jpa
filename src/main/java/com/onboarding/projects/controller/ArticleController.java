@@ -33,15 +33,15 @@ public class ArticleController {
 			this.articleService = articleService;
 		}
 		
-		@GetMapping("/user/{authorId}")
+		@GetMapping("/user/{userId}")
 		@Operation(summary = "사용자 게시글 목록 전체 조회", description = "해당 사용자의 게시글 목록 전체 조회")
 		@ApiResponses({
 				@ApiResponse(responseCode = "200", description = "성공"),
 				@ApiResponse(responseCode = "404", description = "사용자 없음")
 		})
-		public ResponseEntity<List<ArticleResponseDto>> getArticleListByUserId(@PathVariable("authorId") Long authorId) {
+		public ResponseEntity<List<ArticleResponseDto>> getArticleListByUserId(@PathVariable("userId") Long userId) {
 			
-				var articleList = articleService.getArticleListByUserId(authorId);
+				var articleList = articleService.getArticleListByUserId(userId);
 			
 				return ResponseEntity.ok(articleList);
 		}

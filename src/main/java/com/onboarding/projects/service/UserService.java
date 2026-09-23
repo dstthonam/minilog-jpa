@@ -54,7 +54,6 @@ public class UserService {
 														User.builder()
 																	.userName(userRequestDto.getUserName())
 																	.userPassword(userRequestDto.getUserPassword())
-																	//.deleteFlag('Y') 
 																	.build());
 				
 				return EntityDtoMapper.toDto(savedUser);

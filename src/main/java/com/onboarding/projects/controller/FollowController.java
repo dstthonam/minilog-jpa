@@ -32,14 +32,14 @@ public class FollowController {
 			this.followService = followService;
 		}
 		
-		@GetMapping("/following/{followId}")
+		@GetMapping("/following/{followerId}")
 		@Operation(summary = "팔로잉 목록 조회", description = "팔로잉 목록 조회")
 		@ApiResponses({
 				@ApiResponse(responseCode = "200", description = "성공"),
 				@ApiResponse(responseCode = "404", description = "사용자 없음")
 		})
 		public ResponseEntity<List<FollowResponseDto>> getFollowList(
-							@PathVariable("followId") Long followerId
+							@PathVariable("followerId") Long followerId
 						) {
 				
 				List<FollowResponseDto> follows = followService.getFollowList(followerId);

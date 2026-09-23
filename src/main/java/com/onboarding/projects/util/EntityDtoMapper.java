@@ -16,7 +16,10 @@ public class EntityDtoMapper {
 							.articleContent(article.getArticleContent())
 							.authorId(article.getAuthor().getUserId())
 							.authorName(article.getAuthor().getUserName())
-							.createdDate(article.getCreatedDate())
+				            .createdBy(article.getCreatedBy())
+				            .createdDate(article.getCreatedDate())
+				            .modifiedBy(article.getModifiedBy())
+				            .modifiedDate(article.getModifiedDate())
 							.build();
 		}
 		
@@ -25,6 +28,10 @@ public class EntityDtoMapper {
 			return FollowResponseDto.builder()
 							.followerId(follow.getFollower().getUserId())
 							.followeeId(follow.getFollowee().getUserId())
+				            .createdBy(follow.getCreatedBy())
+				            .createdDate(follow.getCreatedDate())
+				            .modifiedBy(follow.getModifiedBy())
+				            .modifiedDate(follow.getModifiedDate())
 							.build();
 		}
 		
@@ -34,6 +41,10 @@ public class EntityDtoMapper {
 							.userId(user.getUserId())
 							.userName(user.getUserName())
 							.deleteFlag(user.getDeleteFlag())
+				            .createdBy(user.getCreatedBy())
+				            .createdDate(user.getCreatedDate())
+				            .modifiedBy(user.getModifiedBy())
+				            .modifiedDate(user.getModifiedDate())
 							.build();
 		}
 		

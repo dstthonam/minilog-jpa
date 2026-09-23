@@ -1,7 +1,5 @@
 package com.onboarding.projects.dto;
 
-import java.time.LocalDateTime;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -14,9 +12,6 @@ import lombok.NonNull;
 @Builder
 public class ArticleRequestDto {
 	
-		//@NonNull
-		//private Long articleId;
-		
 		@NonNull
 		private String articleContent;
 
@@ -26,7 +21,4 @@ public class ArticleRequestDto {
 		@NonNull
 		private Long authorId;
 		
-		private Long createdBy;
-		
-		private LocalDateTime createdDate;
 }

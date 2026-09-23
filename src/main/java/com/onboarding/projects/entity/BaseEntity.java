@@ -11,7 +11,6 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import jakarta.persistence.Column;
 import jakarta.persistence.EntityListeners;
 import jakarta.persistence.MappedSuperclass;
-import jakarta.persistence.PrePersist;
 import lombok.Getter;
 
 @Getter
@@ -35,10 +34,12 @@ public abstract class BaseEntity {
 	    @Column(name = "UPD_DATE", updatable = true)
 		private LocalDateTime modifiedDate;
 		
+		/**
 	    @PrePersist
 	    protected void prePersist() {
 		        this.createdBy = 1L;
 		        this.createdDate = LocalDateTime.now();
 	    }
+	    */
 		
 }
