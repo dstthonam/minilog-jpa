@@ -24,7 +24,6 @@ public class ArticleResponseDto {
 		
 		private Long createdBy;
 		
-		@NonNull
 		private LocalDateTime createdDate;
 
 		private Long modifiedBy;

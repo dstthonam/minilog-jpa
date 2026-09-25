@@ -5,8 +5,11 @@ import java.util.List;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EntityListeners;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -37,6 +40,11 @@ public class User extends BaseEntity {
 		
 		@Column(name = "USER_PASSWORD", nullable = false)
 		private String userPassword;
+
+		@ElementCollection
+		@Enumerated(EnumType.STRING)
+		@Column(name = "userRoles")
+		private List<Role> userRoles;
 		
 		@Column(name = "DEL_FLAG")
 		@Builder.Default
@@ -50,10 +58,10 @@ public class User extends BaseEntity {
 		)
 		private List<Article> articles;
 
-		public User (String userName, String userPassword, String deleteFlag) {
+		public User (String userName, String userPassword, List<Role> userRoles) {
 				this.userName = userName;
 				this.userPassword = userPassword;
-				this.deleteFlag = deleteFlag;
+				this.userRoles = userRoles;
 		}
 		
 		public void updateUser(String userName, String userPassword, String deleteFlag) {
